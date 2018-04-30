@@ -1,0 +1,16 @@
+body{ font-family:"Microsoft YaHei","Hiragino Sans GB"  !important;-webkit-font-smoothing:antialiased; height:auto;  padding:0px !important;    height: auto;margin: 0px;min-height: 100%;position: relative;}
+a{ text-decoration:none !important; cursor:pointer; opacity:0.7}
+a:focus,a:hover,.btn:focus,.btn:hover{ opacity:1}
+input, textarea, keygen, select, button { font-family:"Microsoft YaHei","Hiragino Sans GB" !important;}
+ol,ul { font-family:"Microsoft YaHei","Hiragino Sans GB" ;}
+.bg{ background: url(../img/timg.jpg); height: 100%;background-size: 100% 100%;background-attachment: fixed}
+.bg2{ background:#fff;transition: 1s;}
+.seach{width: 100%;padding:30px;background:rgba(255,255,255,0.2);font-size: 18px;color: #fff;font-weight: normal; text-align: center; margin-top:30%}
+.seach input{ margin-left: 10px; margin-right: 20px; font-weight: bold;padding: 10px 18px;border-radius: 5px;font-size: 18px;height: auto;border: 2px solid #ccc;}
+.seach .btn-default {padding: 10px 20px;border-radius: 5px;font-size: 18px;margin: 30px auto;color: #999;}
+.sea{    background: #f3f3f3;color: #000;margin-top: 0px;border-bottom: 1px solid #adadad; transition: 1s;    margin-bottom: 30px;}
+.panel{ margin-top: 30px; font-size: 12PX}
+.col-md-4 .dl-horizontal dt {width:250px;}
+.col-md-4 .dl-horizontal dd {
+    margin-left:280px;
+}

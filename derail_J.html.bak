@@ -1,0 +1,743 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+  <meta http-equiv="Access-Control-Allow-Origin" content="*" /> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1" /> 
+  <title>征信报告-简版</title> 
+  <link href="css/bootstrap.css" rel="stylesheet" type="text/css" /> 
+  <link href="css/css.css" rel="stylesheet" type="text/css" /> 
+  <script type="text/javascript" src="js/jquery.min.js"></script> 
+  <script type="text/javascript" src="js/bootstrap.min.js"></script> 
+  <script type="text/javascript" src="js/template-web.js"></script> 
+ </head> 
+ <body> 
+  <div id="templateDiv"></div>
+   <script type="text/template" id="template"> 
+  <div class="container"> 
+   <div class="panel panel-primary"> 
+    <div class="panel-heading"> 
+     <h3 class="panel-title">信息概要</h3> 
+    </div> 
+    <div class="panel-body"> 
+     <div class="row"> 
+      <div class="col-xs-6">
+       <dl class="dl-horizontal"> 
+        <dt>
+         身份证号
+        </dt> 
+        <dd>
+        {{if data.baseInfo!=null}}
+           {{data.baseInfo.cardNo}}
+           {{/if}}
+        </dd> 
+        <dt>
+         证件类型
+        </dt> 
+        <dd>
+         {{if data.baseInfo!=null}}
+          {{data.baseInfo.cardType}}
+           {{/if}}
+        </dd> 
+        <dt>
+         姓名
+        </dt> 
+        <dd>
+          {{if data.baseInfo!=null}}
+         {{data.baseInfo.clientName}}
+          {{/if}}
+        </dd> 
+        <dt>
+         报告编号
+        </dt> 
+        <dd>
+         {{data.reportNo}}
+        </dd> 
+       </dl>
+      </div> 
+      <div class="col-xs-6">
+       <dl class="dl-horizontal"> 
+        <dt>
+         报告时间
+        </dt> 
+        <dd>
+          {{if data.baseInfo!=null}}
+         {{data.baseInfo.inquiryDateTimeStr}}
+          {{/if}}
+        </dd> 
+        <dt>
+         查询时间
+        </dt> 
+        <dd>
+         {{if data.baseInfo!=null}}
+         {{data.baseInfo.generationDateTimeStr}}
+          {{/if}}
+        </dd> 
+        <dt>
+         是否已婚
+        </dt> 
+        <dd>
+          {{if data.baseInfo!=null}}
+         {{data.baseInfo.isMarried}}
+          {{/if}}
+        </dd> 
+       </dl>
+      </div> 
+     </div> 
+     <hr />
+       <div class="row"> 
+      <div class="col-xs-6 col-md-4">
+       <dl class="dl-horizontal"> 
+        <dt>
+         保证人代偿笔数
+        </dt> 
+        <dd>
+          {{if data.creditDetail!=null}}
+          {{if data.creditDetail.summaryInfo!=null}}
+         {{data.creditDetail.summaryInfo.assetCompensatoryNum}}
+          {{/if}}
+          {{/if}}
+        </dd> 
+        <dt>
+         资产处置笔数
+        </dt> 
+        <dd>
+          {{if data.creditDetail!=null}}
+          {{if data.creditDetail.summaryInfo!=null}}
+         {{data.creditDetail.summaryInfo.assetDisposeNum}}
+          {{/if}}
+          {{/if}}
+        </dd> 
+       
+       </dl>
+      </div> 
+		</div>
+     <div class="row"> 
+      <div class="col-xs-6 col-md-4">
+       <dl class="dl-horizontal"> 
+        <dt>
+         信用卡账户数
+        </dt> 
+        <dd>
+         {{if data.creditDetail!=null}}
+          {{if data.creditDetail.summaryInfo!=null}}
+         {{data.creditDetail.summaryInfo.creditCardAccountNum}}
+          {{/if}}
+          {{/if}}
+        </dd> 
+        <dt>
+         信用卡为他人担保笔数
+        </dt> 
+        <dd>
+        {{if data.creditDetail!=null}}
+          {{if data.creditDetail.summaryInfo!=null}}
+         {{data.creditDetail.summaryInfo.creditCardGuaranteeNum}}
+          {{/if}}
+          {{/if}}
+        </dd> 
+        <dt>
+         信用卡发生过逾期90天以上的账户数
+        </dt> 
+        <dd>
+         {{if data.creditDetail!=null}}
+          {{if data.creditDetail.summaryInfo!=null}}
+         {{data.creditDetail.summaryInfo.creditCardOverdue90DayNum}}
+          {{/if}}
+          {{/if}}
+        </dd> 
+        <dt>
+         信用卡发生过逾期的账户数
+        </dt> 
+        <dd>
+         {{if data.creditDetail!=null}}
+          {{if data.creditDetail.summaryInfo!=null}}
+         {{data.creditDetail.summaryInfo.creditCardOverdueNum}}
+          {{/if}}
+          {{/if}}
+        </dd> 
+       </dl>
+      </div> 
+      <div class="col-xs-6 col-md-4">
+       <dl class="dl-horizontal"> 
+        <dt>
+         购房贷款账户数
+        </dt> 
+        <dd>
+          {{if data.creditDetail!=null}}
+          {{if data.creditDetail.summaryInfo!=null}}
+         {{data.creditDetail.summaryInfo.houseLoanAccountNum}}
+          {{/if}}
+          {{/if}}
+        </dd> 
+        <dt>
+         购房贷款为他人担保笔数
+        </dt> 
+        <dd>
+          {{if data.creditDetail!=null}}
+          {{if data.creditDetail.summaryInfo!=null}}
+         {{data.creditDetail.summaryInfo.houseLoanGuaranteeNum}}
+          {{/if}}
+          {{/if}}
+        </dd> 
+        <dt>
+         购房贷款发生过逾期90天以上的账户数
+        </dt> 
+        <dd>
+          {{if data.creditDetail!=null}}
+          {{if data.creditDetail.summaryInfo!=null}}
+         {{data.creditDetail.summaryInfo.houseLoanOverdue90DayNum}}
+          {{/if}}
+          {{/if}}
+        </dd> 
+        <dt>
+         购房贷款发生过逾期的账户数
+        </dt> 
+        <dd>
+          {{if data.creditDetail!=null}}
+          {{if data.creditDetail.summaryInfo!=null}}
+         {{data.creditDetail.summaryInfo.houseLoanOverdueNum}}
+          {{/if}}
+          {{/if}}
+        </dd> 
+       </dl>
+      </div> 
+      <div class="col-xs-6 col-md-4">
+       <dl class="dl-horizontal"> 
+        <dt>
+         其他贷款账户数
+        </dt> 
+        <dd>
+         {{if data.creditDetail!=null}}
+          {{if data.creditDetail.summaryInfo!=null}}
+         {{data.creditDetail.summaryInfo.otherLoanAccountNum}}
+          {{/if}}
+          {{/if}}
+        </dd> 
+        <dt>
+         其他贷款为他人担保笔数
+        </dt> 
+        <dd>
+          {{if data.creditDetail!=null}}
+          {{if data.creditDetail.summaryInfo!=null}}
+         {{data.creditDetail.summaryInfo.otherLoanGuaranteeNum}}
+          {{/if}}
+          {{/if}}
+        </dd> 
+        <dt>
+         其他贷款发生过逾期90天以上的账户数
+        </dt> 
+        <dd>
+         {{if data.creditDetail!=null}}
+          {{if data.creditDetail.summaryInfo!=null}}
+         {{data.creditDetail.summaryInfo.otherLoanOverdue90DayNum}}
+          {{/if}}
+          {{/if}}
+        </dd> 
+        <dt>
+         其他贷款发生过逾期的账户数
+        </dt> 
+        <dd>
+         {{if data.creditDetail!=null}}
+          {{if data.creditDetail.summaryInfo!=null}}
+         {{data.creditDetail.summaryInfo.otherLoanOverdueNum}}
+          {{/if}}
+          {{/if}}
+        </dd> 
+       </dl>
+      </div> 
+     </div>  
+    </div> 
+   </div> 
+   
+
+<div class="panel panel-danger">
+  <div class="panel-heading">
+    <h3 class="panel-title">保证人代偿信息部分</h3>
+  </div>
+  <div class="panel-body">
+   <table class="table table-bordered table-hover table-striped" > 
+    <thead> 
+     <tr> 
+      <th>余额</th> 
+      <th>代偿金额</th> 
+      <th>代偿日期</th> 
+      <th>最近一次还款日期</th> 
+      <th>代偿机构</th> 
+      
+     </tr> 
+    </thead> 
+    <tbody> 
+      {{if data.creditDetail!=null}}
+          {{if data.creditDetail.compensatoryList!=null}}
+           {{each data.creditDetail.compensatoryList}}
+     <tr> 
+      <td>{{$value.amountStr}}</td> 
+      <td>{{$value.amountRemainStr}}</td> 
+      <td>{{$value.dateStr}}</td> 
+      <td>{{$value.latestRepaymentDateStr}}</td> 
+      <td>{{$value.organization}}</td> 
+     </tr> 
+      {{/each}}
+    {{/if}}
+          {{/if}}
+    </tbody> 
+   </table>
+  </div>
+</div>
+ <div class="panel  panel-danger">
+  <div class="panel-heading">
+    <h3 class="panel-title">信用卡信息部分</h3>
+  </div>
+  <div class="panel-body">
+	  <h5><strong>· 发生过逾期的贷记卡账户明细</strong></h5 >
+   <table class="table table-bordered table-hover table-striped" > 
+    <thead> 
+     <tr> 
+      <th>额度</th> 
+      <th>信用卡已使用额度</th> 
+      <th>信用类型</th> 
+      <th>发放机构名称</th> 
+      <th>发放日期</th> 
+      <th>5年内几个月逾期超过90天</th> 
+      <th>5年内几个月处于逾期状态</th> 
+      <th>最近更新时间</th> 
+      
+     </tr> 
+    </thead> 
+    <tbody> 
+      {{if data.creditDetail!=null}}
+       {{if data.creditDetail.creditCard!=null}}
+          {{if data.creditDetail.creditCard.creditCardOverdueDetailsList!=null}} 
+           {{each data.creditDetail.creditCard.creditCardOverdueDetailsList}}
+     <tr> 
+      <td>{{$value.amountStr}}</td> 
+      <td>{{$value.creditCardUsedAmountStr}}</td> 
+      <td>{{$value.creditType}}）</td> 
+      <td>{{$value.distributionAuthority}}</td> 
+      <td>{{$value.distributionDateStr}}</td> 
+      <td>{{$value.recent5YearsOverdue90DaysNumOfMonth}}</td> 
+      <td>{{$value.recent5YearsOverdueNumOfMonth}}</td> 
+      <td>{{$value.recentUpdateDateStr}}</td> 
+     </tr> 
+       {{/each}}
+     {{/if}}
+          {{/if}} 
+     
+     {{/if}} 
+    </tbody> 
+   </table>
+    <h5><strong>· 透支超过60天的准贷记卡账户明细</strong></h5 >
+   <table class="table table-bordered table-hover table-striped" > 
+    <thead> 
+     <tr> 
+      <th>额度</th>      
+      <th>信用类型</th> 
+      <th>发放机构名称</th> 
+      <th>发放日期</th> 
+       <th>透支余额</th> 
+      <th>5年内几个月透支超过60天</th> 
+      <th>5年内几个月透支超过90天</th> 
+      <th>最近更新时间</th> 
+      
+     </tr> 
+    </thead> 
+    <tbody> 
+ {{if data.creditDetail!=null}}
+       {{if data.creditDetail.creditCard!=null}}
+          {{if data.creditDetail.creditCard.overdraft60DaysDetailsList!=null}} 
+           {{each data.creditDetail.creditCard.overdraft60DaysDetailsList}}
+
+     <tr> 
+      <td>{{$value.amountStr}}</td>      
+      <td>{{$value.creditType}}</td> 
+      <td>{{$value.distributionAuthority}}</td> 
+      <td>{{$value.distributionDateStr}}</td> 
+      <td>{{$value.overdraftBalanceStr}}</td> 
+      <td>{{$value.recent5YearsOverdraft60DaysNumOfMonth}}</td> 
+      <td>{{$value.recent5YearsOverdraft90DaysNumOfMonth}}</td> 
+      <td>{{$value.recentUpdateDateStr}}</td> 
+     </tr> 
+      {{/each}}
+     {{/if}}
+          {{/if}} 
+     
+     {{/if}} 
+    </tbody> 
+   </table>
+    <h5><strong>· 从未逾期过的贷记卡及透支未超过60天的准贷记卡账户明细</strong></h5 >
+   <table class="table table-bordered table-hover table-striped" > 
+    <thead> 
+     <tr> 
+      <th>额度</th> 
+      <th>信用卡已使用额度</th> 
+      <th>信用类型</th> 
+      <th>发放机构名称</th> 
+      <th>发放日期</th>  
+      <th>最近更新时间</th> 
+      
+     </tr> 
+    </thead> 
+    <tbody> 
+    {{if data.creditDetail!=null}}
+       {{if data.creditDetail.creditCard!=null}}
+          {{if data.creditDetail.creditCard.unOverdueAndUnOverdraft60DaysDetailsList!=null}} 
+           {{each data.creditDetail.creditCard.unOverdueAndUnOverdraft60DaysDetailsList}}
+     <tr> 
+      <td>{{$value.amountStr}}</td> 
+      <td>{{$value.creditCardUsedAmountStr}}</td> 
+      <td>{{$value.creditType}}</td> 
+      <td>{{$value.distributionAuthority}}</td> 
+      <td>{{$value.distributionDateStr}}</td> 
+      <td>{{$value.recentUpdateDateStr}}</td> 
+     </tr> 
+   {{/each}}
+     {{/if}}
+          {{/if}} 
+          {{/if}} 
+    </tbody> 
+   </table>
+  </div>
+</div>
+  <div class="panel panel-danger">
+  <div class="panel-heading">
+    <h3 class="panel-title">购房贷款部分</h3>
+  </div>
+  <div class="panel-body">
+	  <h5><strong>· 发生过逾期的账户明细</strong></h5 >
+   <table class="table table-bordered table-hover table-striped" > 
+    <thead> 
+     <tr> 
+      <th>额度</th> 
+      <th>信用类型</th> 
+      <th>发放机构名称</th> 
+      <th>发放日期</th>
+      <th>到期日期</th> 
+      <th>贷款余额</th>
+      <th>5年内几个月逾期超过90天</th> 
+      <th>5年内几个月处于逾期状态</th>
+      <th>最近更新时间</th> 
+      
+     </tr> 
+    </thead> 
+    <tbody> 
+      {{if data.creditDetail!=null}}
+       {{if data.creditDetail.houseLoan!=null}}
+          {{if data.creditDetail.houseLoan.overdueLoanList!=null}} 
+           {{each data.creditDetail.houseLoan.overdueLoanList}}
+     <tr> 
+      <td>{{$value.amountStr}}</td> 
+      <td>{{$value.creditType}}</td> 
+      <td>{{$value.distributionAuthority}}</td> 
+      <td>{{$value.distributionDateStr}}</td> 
+      <td>{{$value.expireDateStr}}</td> 
+      <td>{{$value.loanBalanceStr}}</td>  
+      <td>{{$value.recent5YearsOverdue90DaysNumOfMonth}}</td>  
+      <td>{{$value.recent5YearsOverdueNumOfMonth}} </td> 
+      <td>{{$value.recentUpdateDateStr}}</td> 
+     </tr> 
+     {{/each}}
+     {{/if}}
+          {{/if}} 
+          {{/if}} 
+    </tbody> 
+   </table>
+    <h5><strong>· 未发生过逾期的账户明细</strong></h5 >
+  <table class="table table-bordered table-hover table-striped" > 
+    <thead> 
+     <tr> 
+      <th>额度</th> 
+      <th>信用类型</th> 
+      <th>发放机构名称</th> 
+      <th>发放日期</th>
+      <th>到期日期</th> 
+      <th>贷款余额</th>
+      <th>5年内几个月逾期超过90天</th> 
+      <th>5年内几个月处于逾期状态</th>
+      <th>最近更新时间</th> 
+      
+     </tr> 
+    </thead> 
+    <tbody> 
+      {{if data.creditDetail!=null}}
+       {{if data.creditDetail.houseLoan!=null}}
+          {{if data.creditDetail.houseLoan.unOverdueLoanList!=null}} 
+           {{each data.creditDetail.houseLoan.unOverdueLoanList}}
+     <tr> 
+      <td>{{$value.amountStr}}</td> 
+      <td>{{$value.creditType}}</td> 
+      <td>{{$value.distributionAuthority}}</td> 
+      <td>{{$value.distributionDateStr}}</td> 
+      <td>{{$value.expireDateStr}}</td> 
+        <td>{{$value.loanBalanceStr}}</td>  
+        <td>{{$value.recent5YearsOverdue90DaysNumOfMonth}}</td>  
+        <td>{{$value.recent5YearsOverdueNumOfMonth}}</td>  
+      <td>{{$value.recentUpdateDateStr}}</td> 
+     </tr> 
+       {{/each}}
+     {{/if}}
+          {{/if}} 
+          {{/if}} 
+    </tbody> 
+   </table>
+  </div>
+</div>
+   <div class="panel panel-danger">
+  <div class="panel-heading">
+    <h3 class="panel-title">其他贷款部分</h3>
+  </div>
+  <div class="panel-body">
+	  <h5><strong>· 发生过逾期的账户明细</strong></h5 >
+   <table class="table table-bordered table-hover table-striped" > 
+    <thead> 
+     <tr> 
+      <th>额度</th> 
+      <th>信用类型</th> 
+      <th>发放机构名称</th> 
+      <th>发放日期</th>
+      <th>到期日期</th> 
+      <th>贷款余额</th>
+      <th>逾期金额</th>
+      <th>5年内几个月逾期超过90天</th> 
+      <th>5年内几个月处于逾期状态</th>
+      <th>最近更新时间</th> 
+      
+     </tr> 
+    </thead> 
+    <tbody> 
+     {{if data.creditDetail!=null}}
+       {{if data.creditDetail.otherLoan!=null}}
+          {{if data.creditDetail.otherLoan.overdueLoanList!=null}} 
+           {{each data.creditDetail.otherLoan.overdueLoanList}}
+     <tr> 
+      <td>{{$value.amountStr}}</td> 
+      <td>{{$value.creditType}}</td> 
+      <td>{{$value.distributionAuthority}}</td> 
+      <td>{{$value.distributionDateStr}}</td> 
+      <td>{{$value.expireDateStr}}</td> 
+        <td>{{$value.loanBalanceStr}}</td> 
+         <td>{{$value.overdueAmountStr}}</td> 
+        <td>{{$value.recent5YearsOverdue90DaysNumOfMonth}}</td>  
+        <td>{{$value.recent5YearsOverdueNumOfMonth}}</td>  
+      <td>{{$value.recentUpdateDateStr}}</td> 
+     </tr> 
+     {{/each}}
+     {{/if}}
+          {{/if}} 
+          {{/if}} 
+    </tbody> 
+   </table>
+    <h5><strong>· 从未逾期过的账户明细</strong></h5 >
+  <table class="table table-bordered table-hover table-striped" > 
+    <thead> 
+     <tr> 
+      <th>额度</th> 
+      <th>信用类型</th> 
+      <th>发放机构名称</th> 
+      <th>发放日期</th>
+      <th>到期日期</th> 
+	    <th>结清日期</th>
+      <th>贷款余额</th>
+      <th>5年内几个月逾期超过90天</th> 
+      <th>5年内几个月处于逾期状态</th>
+      <th>最近更新时间</th> 
+      
+     </tr> 
+    </thead> 
+    <tbody> 
+     {{if data.creditDetail!=null}}
+       {{if data.creditDetail.otherLoan!=null}}
+          {{if data.creditDetail.otherLoan.overdueLoanList!=null}} 
+           {{each data.creditDetail.otherLoan.overdueLoanList}}
+     <tr> 
+      <td>{{$value.amountStr}}</td> 
+      <td>{{$value.creditType}}</td> 
+      <td>{{$value.distributionAuthority}}</td> 
+      <td>{{$value.distributionDateStr}}</td> 
+      <td>{{$value.expireDateStr}}</td>
+       <td>{{$value.closeDateStr}}</td> 
+        <td>{{$value.loanBalanceStr}}</td> 
+        <td>{{$value.recent5YearsOverdue90DaysNumOfMonth}}</td>  
+        <td>{{$value.recent5YearsOverdueNumOfMonth}}</td>  
+        <td>{{$value.recentUpdateDateStr}}</td>  
+     
+     </tr> 
+     {{/each}}
+     {{/if}}
+          {{/if}} 
+          {{/if}} 
+    </tbody> 
+   </table>
+  </div>
+</div>
+   <div class="panel panel-warning">
+  <div class="panel-heading">
+    <h3 class="panel-title">为他人担保信息</h3>
+  </div>
+  <div class="panel-body">
+	
+   <table class="table table-bordered table-hover table-striped" > 
+    <thead> 
+     <tr> 
+      <th>证件号码</th> 
+      <th>证件类型</th> 
+      <th>合同金额</th> 
+      <th>最新更新日期</th>
+      <th>签约机构</th> 
+      <th>日期</th>
+      <th>被担保人姓名</th>
+      <th>担保金额</th> 
+      <th>担保贷款余额、担保信用卡已用额度</th>
+      <th>担保类型</th> 
+      
+     </tr> 
+    </thead> 
+    <tbody> 
+      {{if data.creditDetail!=null}}
+       {{if data.creditDetail.warrantList!=null}}        
+           {{each data.creditDetail.warrantList}}
+     <tr> 
+      <td>{{$value.cardNo}}</td> 
+      <td>{{$value.cardType}}</td> 
+      <td>{{$value.contractAmountStr}}</td> 
+      <td>{{$value.recentUpdateDateStr}}</td> 
+		 <td>{{$value.signOrganization}}</td>
+      <td>{{$value.startDateStr}}</td> 
+        <td>{{$value.voucheeName}}</td> 
+         <td>{{$value.warrantAmountStr}}</td> 
+        <td>{{$value.warrantRemainAmountStr}}</td>  
+        <td>{{$value.warrantType}}</td> 
+     </tr> 
+      {{/each}}
+     {{/if}}
+          {{/if}} 
+         
+    </tbody> 
+   </table>
+
+  </div>
+</div>
+    <div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title">公共记录</h3>
+  </div>
+  <div class="panel-body">
+	 <h5><strong>· 强制执行记录</strong></h5 >
+   <table class="table table-bordered table-hover table-striped" > 
+    <thead> 
+     <tr> 
+      <th>已执行标的</th> 
+      <th>申请执行标的金额</th> 
+      <th>申请执行标的</th> 
+      <th>结案时间</th>
+      <th>执行法院</th> 
+      <th>结案方式</th>
+      <th>执行案由</th>
+      <th>立案时间</th> 
+      <th>案号</th>
+      <th>案件状态</th> 
+      
+     </tr> 
+    </thead> 
+    <tbody> 
+      {{if data.publicRecord!=null}}
+       {{if data.publicRecord.enforcementRecord!=null}}     
+         
+     <tr> 
+      <td>     
+            {{data.publicRecord.enforcementRecord.alreadyExecuted}}      
+      </td> 
+      <td>{{data.publicRecord.enforcementRecord.applyAmountStr}}</td> 
+      <td>{{data.publicRecord.enforcementRecord.applyExecute}}</td> 
+      <td>{{data.publicRecord.enforcementRecord.closeDateStr}}</td> 
+     <td>{{data.publicRecord.enforcementRecord.court}}</td>
+      <td>{{data.publicRecord.enforcementRecord.endType}}</td> 
+        <td>{{data.publicRecord.enforcementRecord.executeReason}}</td> 
+        <td>{{data.publicRecord.enforcementRecord.openDateStr}}</td> 
+         <td>{{data.publicRecord.enforcementRecord.orderNo}}</td>  
+        <td>{{data.publicRecord.enforcementRecord.status}}
+        </td> 
+     </tr> 
+     
+     {{/if}}
+        
+          {{/if}} 
+    </tbody> 
+   </table>
+
+  </div>
+</div>
+     <div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title">查询记录</h3>
+  </div>
+  <div class="panel-body">
+	 <h5><strong>· 机构查询记录明细</strong></h5 >
+   <table class="table table-bordered table-hover table-striped" > 
+    <thead> 
+     <tr> 
+     <th>编号</th> 
+      <th>查询原因</th> 
+      <th>查询日期</th> 
+		 <th>查询操作员</th> 
+      
+     </tr> 
+    </thead> 
+    <tbody> 
+     {{if data.inquiryInfo!=null}}
+       {{if data.inquiryInfo.authInquiryDetailsList!=null}}     
+           {{each data.inquiryInfo.authInquiryDetailsList}}
+     <tr> 
+      <td>{{$value.number}}</td> 
+      <td>{{$value.cause}}</td> 
+      <td>{{$value.dateStr}}</td> 
+		 <td>{{$value.operator}}</td>
+     </tr>
+       {{/each}}
+            {{/if}}
+        
+          {{/if}} 
+    
+    </tbody> 
+   </table>
+
+  </div>
+</div>
+  </div>  
+  </script>
+
+      <script>
+    //获取地址栏参数
+     function GetQueryString(name) {
+     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+     var r = window.location.search.substr(1).match(reg);
+     if(r!=null)return  unescape(r[2]); return null;
+   }
+
+
+   // 初始化内容
+   $(function() {
+     var id=GetQueryString("id");
+     var wordType=GetQueryString("wordType");
+     $.ajax({
+            url:"http://localhost:8803/creditreport-parser-api/findPersonCreditById",
+             type: "POST",
+             dataType: 'json',
+             async:false,
+            data:{id:id,wordType:wordType},
+            success:function (data) {
+                // 如果不写jsonpCallback 那么默认调用的是success方法
+                console.log(data);
+                // 读取对象
+                var weatherResult = data;
+                 // console.log(weatherResult);
+                // 调用模板
+               var str = template('template',weatherResult);             
+                $('#templateDiv').html("").append(str);
+            }
+        });
+    });
+
+    </script> 
+ </body>
+</html>
