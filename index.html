@@ -8,18 +8,21 @@
   <title>征信报告查询</title> 
   <link href="css/bootstrap.css" rel="stylesheet" type="text/css" /> 
   <link href="css/css.css" rel="stylesheet" type="text/css" /> 
+   <script type="text/javascript" src="js/config.js"></script> 
   <script type="text/javascript" src="js/jquery.min.js"></script> 
   <script type="text/javascript" src="js/bootstrap.min.js"></script> 
    <script type="text/javascript" src="js/template-web.js"></script> 
+  
  </head> 
  <body class="bg"> 
   <div class="seach">
    <form class="form-inline"> 
     <div class="form-group"> 
      <label for="id_num">身份证号：</label> 
-     <input type="text" class="form-control" id="id_num" placeholder="请输入身份证号" value="510202196910315521" /> 
+     <input type="text" style="width:350px;" class="form-control" id="id_num" placeholder="请输入身份证号" value="510202196910315521" /> 
     </div> 
     <a class="btn btn-default" id="getList">开始检索</a> 
+    <a class="btn btn-default" id="clearList">清除</a> 
    </form> 
   </div> 
   <div class="container" align="center"> 
@@ -46,8 +49,8 @@
      {{each data}}
      <tr> 
       <td>{{$value.reportNo}}</td>  
-       <td>{{$value.baseInfo.name}}</td> 
-      <td>{{$value.baseInfo.idcard}}</td> 
+      <td>{{$value.name}}</td> 
+      <td>{{$value.idcard}}</td> 
       <td>{{$value.strRequestDateTime}}</td> 
       <td>{{$value.strGenerateDateTime}}</td> 
       <td>{{$value.wordName}}</td>     
@@ -80,6 +83,9 @@ $(".bg").addClass("bg2");
 		$("table").show()
 	}	
 
+$('#clearList').click(function(){
+  $("#id_num").val('');
+});
 
     $('#getList').click(function () {
 
@@ -101,7 +107,7 @@ var reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
 
       var idCard=$("#id_num").val();
         $.ajax({
-            url:"http://localhost:8804/creditreport-parser-api/findPersonCreditListByIdCard",
+            url:Global[evn].report_api_url+ "/creditreport-parser-api/findPersonCreditListByIdCard",
              type: "POST",
              dataType: 'json',
              async:false,

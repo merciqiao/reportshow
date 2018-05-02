@@ -8,9 +8,11 @@
   <title>征信报告-简版</title> 
   <link href="css/bootstrap.css" rel="stylesheet" type="text/css" /> 
   <link href="css/css.css" rel="stylesheet" type="text/css" /> 
+  <script type="text/javascript" src="js/config.js"></script> 
   <script type="text/javascript" src="js/jquery.min.js"></script> 
   <script type="text/javascript" src="js/bootstrap.min.js"></script> 
   <script type="text/javascript" src="js/template-web.js"></script> 
+  
  </head> 
  <body> 
   <div id="templateDiv"></div>
@@ -720,7 +722,7 @@
      var id=GetQueryString("id");
      var wordType=GetQueryString("wordType");
      $.ajax({
-            url:"http://localhost:8804/creditreport-parser-api/findPersonCreditById",
+            url:Global[evn].report_api_url+"/creditreport-parser-api/findPersonCreditById",
              type: "POST",
              dataType: 'json',
              async:false,

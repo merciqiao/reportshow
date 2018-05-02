@@ -8,6 +8,7 @@
   <title>征信报告查询</title> 
   <link href="css/bootstrap.css" rel="stylesheet" type="text/css" /> 
   <link href="css/css.css" rel="stylesheet" type="text/css" /> 
+  <script type="text/javascript" src="js/config.js"></script> 
   <script type="text/javascript" src="js/jquery.min.js"></script> 
   <script type="text/javascript" src="js/bootstrap.min.js"></script> 
    <script type="text/javascript" src="js/template-web.js"></script> 
@@ -17,9 +18,10 @@
    <form class="form-inline"> 
     <div class="form-group"> 
      <label for="id_num">文件名称：</label> 
-     <input type="text" class="form-control" id="id_num" placeholder="请输入文件名称" value="DDPHYB1642017121500001.docx" /> 
+     <input type="text" style="width:350px;" class="form-control" id="id_num" placeholder="请输入文件名称" value="DDPHYB1642017121500001.docx" /> 
     </div> 
     <a class="btn btn-default" id="getList">开始检索</a> 
+    <a class="btn btn-default" id="clearList">清除</a> 
    </form> 
   </div> 
   <div class="container" align="center"> 
@@ -69,7 +71,9 @@ $(".bg").addClass("bg2");
 		$("table").show()
 	}	
 
-
+$('#clearList').click(function(){
+  $("#id_num").val('');
+});
     $('#getList').click(function () {
 
 var reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/; 
@@ -90,7 +94,7 @@ var reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
 
       var idCard=$("#id_num").val();
         $.ajax({
-            url:"http://localhost:8804/creditreport-parser-api/findByWordNameOrderByCreatetimeAsc",
+            url:Global[evn].report_api_url+"/creditreport-parser-api/findByWordNameOrderByCreatetimeAsc",
              type: "POST",
              dataType: 'json',
              async:false,
