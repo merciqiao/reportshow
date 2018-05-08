@@ -52,7 +52,14 @@
          {{data.baseInfo.name}}
           {{/if}}
         </dd> 
-      
+      <dt>
+         报告请求时间
+        </dt> 
+        <dd>
+        {{if data.strRequestDateTime!=null}}
+         {{data.strRequestDateTime}}
+          {{/if}}
+        </dd> 
        </dl>
       </div> 
       <div class="col-xs-6">
@@ -78,6 +85,14 @@
         </dt> 
         <dd>
            {{data.reportNo}}
+        </dd> 
+           <dt>
+         报告时间
+        </dt> 
+        <dd>
+        {{if data.strGenerateDateTime!=null}}
+         {{data.strGenerateDateTime}}
+          {{/if}}
         </dd> 
        </dl>
       </div> 
@@ -149,11 +164,19 @@
         {{/if}}
         </dd> 
         <dt>
-       学位
+       学历
         </dt> 
         <dd>
           {{if data.identityInfo!=null}}
          {{data.identityInfo.education}}
+          {{/if}}
+        </dd> 
+        <dt>
+       学位
+        </dt> 
+        <dd>
+          {{if data.identityInfo!=null}}
+         {{data.identityInfo.degree}}
           {{/if}}
         </dd> 
         <dt>
